@@ -9,7 +9,7 @@ I undertook this personal project to demonstrate my AWS and Linux system adminis
 
 
 1. **Linux Server ** 
-1a. **Provisioning Ubuntu Server on AWS **
+1a.Provisioning Ubuntu Server on AWS
 The first step was to provision an ubuntu server on AWS to allow us to run our servers on using my free-tier account. I selected the N.Virgina (us-east-1) as my region and selected the Ubuntu 18.04.6 LTS as my AMI and the t.2 micro as my instance type. I kept the default settings for the storage and network configuration ( 8GB SSD gp2 and default VPC). I added a simple tag in order to recognise my resource.   
 
 I also configured the security group of the instance to allow SSH, HTTP & HTTPS traffic into the server. This kept port 22, 80 and 443 open for incoming traffic from all hosts (0.0.0.0/0). Once done I launched my instance and it was up and running very quickly. 
