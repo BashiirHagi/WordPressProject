@@ -54,16 +54,16 @@ To install the nginx service i ran sudo apt-get install nginx. I accepted the in
 ### Nginx configuration
 To configure the ngnix server I went to the /etc/nginx directory and pasted the below configuration in the nginx.conf file: 
 
-user  www-data;
-worker_processes  auto;
+    user  www-data;
+    worker_processes  auto;
 
-pid /run/nginx.pid;
+    pid /run/nginx.pid;
 
-events {
+    events {
     worker_connections  1024;
-}
+    }
 
-http {
+    http {
     include       mime.types;
     default_type  application/octet-stream;
 
@@ -93,13 +93,14 @@ http {
 
     include /etc/nginx/conf.d/*.conf;
     include /etc/nginx/sites-enabled/*;
-}
+    }
 
 
-### 4. Relational Database (RDS) 
+### 4. MySQL Database
+The database server for the wordpress application is a MySQL database server which will provide reliable data services to to the WordPress application. I installed and configured the database server by perfroming mysql queries. 
 
 ## 4.a: MySQL Database Download
-To download the mysql database I ran the sudo apt-get install mysql-server to start the process. Once completed, ran sudo mysql_secure_installation to configure it using MySQL's security script: 
+To download the mysql database I ran the sudo apt-get install mysql-server to start the process. Once completed, I ran sudo mysql_secure_installation to configure it using MySQL's security script: 
 
 - For the VALIDATE PASSWORD PLUGIN, I set a MySQL root password as STRONG length  
 - Disabled root account access from a remote client (outside of the local host); 
@@ -136,27 +137,33 @@ Now that I had all the services on the ubuntu server It was important that I now
 
 
 ## 7. WordPress Application Setup
+This is the section where I installed the WordPress application on the Ubuntu server. I created a system user where I congiured the nginx server on the php-fpm on. 
 
 ### Creating a systemuser - techwithbashiir
 Ensuring correct permissions on home directory
 
+- adduser techwithbashiir
+- mkdir -p /home/techwithbashiir/logs
+- chown techwithbashiir:www-data /home/techwithbashiir/logs/
 
+I then applied the necessary permissions levels on the home directory. This is to ensure that the nginx and PHP can read all website related files in the users home directory. 
 
-
+- chown techwithbashiir:www-data /home/techwithbashiir 
+- chmod 755 /home/techwithbashiir 
 
 
 ### creating a nginx vhsot config file 
 
-- nano /etc/nginx/conf.d/tutorialinux.conf - explain 
+I put the below configuration in the nginx configuration file:  
 
-server {
+    server {
     listen       80;
-    server_name  www.tutorialinux.com;
+    server_name  www.techwithbashiir.com;
 
     client_max_body_size 20m;
 
     index index.php index.html index.htm;
-    root   /home/tutorialinux/public_html;
+    root   /home/techwithbashiir/public_html;
 
     location / {
         try_files $uri $uri/ /index.php?q=$uri&$args;
@@ -203,7 +210,7 @@ server {
 
 
             # General FastCGI handling
-            fastcgi_pass unix:/var/run/php/tutorialinux.sock;
+            fastcgi_pass unix:/var/run/php/techwithbashiir.sock;
             fastcgi_pass_header Set-Cookie;
             fastcgi_pass_header Cookie;
             fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
@@ -226,45 +233,43 @@ server {
     #location ~ /\.ht {
     #    deny  all;
     #}
-}
+    }
 
-server {
+    server {
     listen       80;
-    server_name  tutorialinux.com;
-    rewrite ^/(.*)$ http://www.tutorialinux.com/$1 permanent;
-}
+    server_name  techwithbashiir.com;
+    rewrite ^/(.*)$ http://www.techwithbashiir.com/$1 permanent;
+    } 
 
 
 ### Creating a php-fpm vhost pool config file
 
---  nano /etc/php/7.4/fpm/pool.d/tutorialinux.conf
+I put the below configuration in the php-fpm configuration file: 
 
-[techwitbashiir]
-listen = /var/run/php/techwithbashiir.sock
-listen.owner = techwithbashiir
-listen.group = www-data
-listen.mode = 0660
-user = techwithbashiir
-group = www-data
-pm = dynamic
-pm.max_children = 75
-pm.start_servers = 8
-pm.min_spare_servers = 5
-pm.max_spare_servers = 20
-pm.max_requests = 500
+    [techwithbashiir]
+    listen = /var/run/php/techwithbashiir.sock
+    listen.owner = techwithbashiir
+    listen.group = www-data
+    listen.mode = 0660
+    user = techwithbashiir
+    group = www-data
+    pm = dynamic
+    pm.max_children = 75
+    pm.start_servers = 8
+    pm.min_spare_servers = 5
+    pm.max_spare_servers = 20
+    pm.max_requests = 500
 
-php_admin_value[upload_max_filesize] = 25M
-php_admin_value[error_log] = /home/techwithbashiir/logs/phpfpm_error.log
-php_admin_value[open_basedir] = /home/techwithbashiir:/tmp
+    php_admin_value[upload_max_filesize] = 25M
+    php_admin_value[error_log] = /home/techwithbashiir/logs/phpfpm_error.log
+    php_admin_value[open_basedir] = /home/techwithbashiir:/tmp
 
 
 ### 7.a: Downloading & Intalling Wordpress  
 
- Extract Wordpress archives (clean up) 
- 
- -----> COMPLETEL THIS SECTION !!! 
+In order to download Wordpress I executed wget https://wordpress.org/latest.tar.gz. This transferred and downloaded all the WordPress application files onto my Ubuntu server. It was orginally in a compressed file and I extracted it by using tar zxf utility. 
 
-
+The wordpress application was now hosted on my Ubuntu server and fully accessible to be used. 
 
 
 ## 8. Using Route 53 (AWS) to create a domain name for the WordPress site
@@ -280,21 +285,12 @@ Once the domain name was successfully registered I created a DNS A record to mat
 
 Once I had the domain name record created I tested its functionality by performing dns queries against it. I ran the dig and nslookup commands against – techwithbashiir.com, and it returned my server information successfully. The domain name was good to be used now.   
 
- /etc/hosts file  
-
-3.220.165.196    techwithbashiir.com
-3.220.165.196    www.techwithbashiir.com
-
-Added the ip address and wordpress domain name to bypass the DNS (quicker performance) - becausetraffic not routing through the DNS 
-
-Config was added on the local machine cn 
-
-
 <img width="1423" alt="Screenshot 2021-12-14 at 12 10 31" src="https://user-images.githubusercontent.com/89197223/145995828-d47d014b-f7b3-4a6b-9fd1-fd9eaf3b429c.png">
 
  
 
  ### Wordpress Site Result
+ 
  
  
  
