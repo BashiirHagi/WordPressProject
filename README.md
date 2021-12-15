@@ -293,12 +293,17 @@ Once I had the domain name record created I tested its functionality by performi
 <img width="1423" alt="Screenshot 2021-12-14 at 12 10 31" src="https://user-images.githubusercontent.com/89197223/145995828-d47d014b-f7b3-4a6b-9fd1-fd9eaf3b429c.png">
 
 
- ### Final WordPress Site
+
+
+
+ ### 9 Final WordPress Site
  
-<img width="1074" alt="Screenshot 2021-12-15 at 14 58 50" src="https://user-images.githubusercontent.com/89197223/146209970-6dc8c004-279d-476c-8694-839b4d5f274d.png">
+
+<img width="1074" alt="Screenshot 2021-12-15 at 15 24 09" src="https://user-images.githubusercontent.com/89197223/146214345-484bf872-8832-4926-bd44-2d821e5ba8f5.png">
 
 
- I want to give a special thanks to: 
+
+ ### I want to give a special thanks to: 
  
  [Amazon Web Services](https://aws.amazon.com/free/?trk=ps_a131L0000085EJeQAM&trkCampaign=acq_paid_search_brand&sc_channel=ps&sc_campaign=acquisition_UK&sc_publisher=google&sc_category=core-main&sc_country=UK&sc_geo=EMEA&sc_outcome=Acquisition&sc_detail=amazon%20web%20services&sc_content=Brand_amazon_web_services_e&sc_matchtype=e&sc_segment=433803620861&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Core-Main|Core|UK|EN|Text&s_kwcid=AL!4422!3!433803620861!e!!g!!amazon%20web%20services&ef_id=EAIaIQobChMIs5PagYnm9AIVd4BQBh0uBQN4EAAYASAAEgI2kvD_BwE:G:s&s_kwcid=AL!4422!3!433803620861!e!!g!!amazon%20web%20services) - For the amazing cloud resources & documentation. 
  
