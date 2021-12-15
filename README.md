@@ -302,8 +302,8 @@ Once I had the domain name record created I tested its functionality by performi
  
  [Amazon Web Services](https://aws.amazon.com/free/?trk=ps_a131L0000085EJeQAM&trkCampaign=acq_paid_search_brand&sc_channel=ps&sc_campaign=acquisition_UK&sc_publisher=google&sc_category=core-main&sc_country=UK&sc_geo=EMEA&sc_outcome=Acquisition&sc_detail=amazon%20web%20services&sc_content=Brand_amazon_web_services_e&sc_matchtype=e&sc_segment=433803620861&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Core-Main|Core|UK|EN|Text&s_kwcid=AL!4422!3!433803620861!e!!g!!amazon%20web%20services&ef_id=EAIaIQobChMIs5PagYnm9AIVd4BQBh0uBQN4EAAYASAAEgI2kvD_BwE:G:s&s_kwcid=AL!4422!3!433803620861!e!!g!!amazon%20web%20services) - For the amazing cloud resources & documentation. 
  
- @groovemonkey (Dave Cohen) for his awesome Udemy course and other content on Youtube
- [David Cohen ](https://www.linkedin.com/in/david-cohen-3a704525/) - For his amazing Udemy course and tutorials on YouTube
+[David Cohen] (https://www.linkedin.com/in/david-cohen-3a704525/) for his awesome Udemy course and other content on Youtube
+
  
 
  
