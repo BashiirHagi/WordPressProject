@@ -46,10 +46,10 @@ To install the Apache webserver I ran sudo apt-get install apache2. I accepted t
 ## 3. Nginx
 To improve my WordPress site performance I integrated the Nginx server into my application setup. This will improve performance by providing web caching functionality. It will store regular requested content on the cache server and reduce the load on the webserver.       
 
-### Nginx installation
+### 3.a: Nginx installation
 To install the Nginx service I ran sudo apt-get install nginx. I accepted the installation terms and the webserver was successfully installed. To confirm this I ran - systemctl status nginx and it showed that the nginx service was running and active. 
 
-### Nginx configuration
+### 3.b: Nginx configuration
 To configure the ngnix server I went to the /etc/nginx directory and pasted the below configuration into the nginx.conf file: 
 
     user  www-data;
@@ -133,7 +133,7 @@ At this point, I had a production server running in my AWS environment with data
 
 ## 6. Service management using Systemd
 
-### Restarting and Checking system services 
+### 6.a: Restarting and Checking system services 
 
 Now that I had all the required services on the Ubuntu server It was important that I now restarted and checked that the services were running correctly. I made sure of this by using the systemd service and running sudo systemctl restart mysql-server, ngninx, apache2, php7.2-fpm. I then checked the status of the services by running sudo systemctl status mysql-server, ngninx, apache2, php7.2-fpm. All the services were in the active and running state which is what I wanted. 
 
@@ -141,7 +141,7 @@ Now that I had all the required services on the Ubuntu server It was important t
 ## 7. WordPress Application Setup
 This is the section where I installed the WordPress application on the Ubuntu server. I created a system user where I congiured the nginx server and the php-fpm on. 
 
-### Creating a systemuser - techwithbashiir
+### 7.a: Creating a systemuser - techwithbashiir
 Ensuring correct permissions on the home directory
 
 - adduser techwithbashiir
@@ -154,7 +154,7 @@ I then applied the necessary permissions levels on the home directory. This is t
 - chmod 755 /home/techwithbashiir 
 
 
-### creating a Nginx configuration file 
+### 7.b: Creating a Nginx configuration file 
 
 I put the below configuration in the Nginx configuration file:  
 
@@ -244,7 +244,7 @@ I put the below configuration in the Nginx configuration file:
     } 
 
 
-### Creating a php-fpm pool configuration file
+### 7.c: Creating a php-fpm pool configuration file
 
 I put the below configuration in the php-fpm configuration file: 
 
@@ -267,7 +267,7 @@ I put the below configuration in the php-fpm configuration file:
     php_admin_value[open_basedir] = /home/techwithbashiir:/tmp
 
 
-### 7.a: Downloading & Intalling Wordpress  
+### 7.d: Downloading & Intalling Wordpress  
 
 In order to download Wordpress I executed wget https://wordpress.org/latest.tar.gz. This transferred and downloaded all the WordPress application files onto my Ubuntu server. It was orginally in a compressed file and I extracted it by using the tar zxf utility. 
 
@@ -280,7 +280,7 @@ I decided to use AWS DNS registar Route53 to register my WordPress site domain n
 
 ### 8.a: Registering a domain name using Route 53 service
 
-To make my WordPress site more user friendly I registered a domain using AWS Route 53 service. I chose the address - techwithbashiir.com as this was available for me to reserve. I provided some key detail about myself such as Name, Location and Contact information. I made a payment of 10.09 for the domain name for 1 annual year and it was active in under 1 hour.   
+To make my WordPress site more user friendly I registered a domain using AWS Route 53 service. I chose the address - techwithbashiir.com as this was available for me to reserve. I provided some key detail about myself such as Name, Location and Contact information. I made a payment of £10.90 for the domain name for 1 year and it was active in under 1 hour.   
 
 ### 8.b: Created a DNS A record on Route 53 Hosted zone   
 
