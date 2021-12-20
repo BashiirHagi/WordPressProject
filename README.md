@@ -8,7 +8,7 @@ I undertook this personal project to demonstrate my AWS and Linux system adminis
 - It must meet the minimal performance requirements for reliability purposes.
 
 ![WordPress App](https://user-images.githubusercontent.com/89197223/146795202-f5d72b74-9e88-42a4-b766-764f9b96e9b7.png)
-         [Image above is the AWS architecture of the WordPress application generated using Lucidchart]
+  [Image above is the AWS architecture of the WordPress application generated using Lucidchart]
 
 
 ## 1.Linux Server 
